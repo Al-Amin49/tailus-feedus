@@ -10,7 +10,7 @@ const RecipesList = () => {
   const [openDetails, setOpenDetails] = useState(false);
   const [recipeId, setRecipeId] = useState("");
   const [recipes, setRecipes] = useState([]);
-  const [searchInput, setSearchInput] = useState("abc");
+  const [searchInput, setSearchInput] = useState(""); //fixed from abc to ""
   const [searchQuery, setSearchQuery] = useState(null);
 
   const { data, isLoading, error } = useQuery({
@@ -48,12 +48,9 @@ const RecipesList = () => {
                 placeholder="Your favorite food"
                 className="w-full p-4 rounded-full outline-none bg-transparent "
                 type="text"
-                onChange={(e) =>
-                  setSearchInput((prev) => ({
-                    ...prev,
-                    value: e.target.value,
-                  }))
-                }
+                //fixed 
+                onChange={(e) =>setSearchInput(e.target.value)}
+                
               />
               <button
                 onClick={() => handleSearch()}

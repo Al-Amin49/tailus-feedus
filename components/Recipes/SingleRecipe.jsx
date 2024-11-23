@@ -5,11 +5,13 @@ import React from "react";
 
 const SingleRecipe = ({ id, setIsOpen }) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ["recipe-details"],
+    //previously id not passing (newly added)
+    queryKey: ["recipe-details", id],
     queryFn: () => HttpKit.getRecipeDetails(id),
   });
 
-  if (!isLoading) return "Loading...";
+  //fixed this from !isLoading to isLoading
+  if (isLoading) return "Loading...";
   return (
     <div className="flex flex-col gap-5">
       <div className="flex justify-end">
