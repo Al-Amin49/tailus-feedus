@@ -9,7 +9,7 @@ const AllRecipes = () => {
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["recipes"],
-    queryFn: HttpKit.getTopRecipes,
+    queryFn: HttpKit.getAllRecipes,
   });
 
   useEffect(() => {
