@@ -42,6 +42,7 @@ export async function POST(req) {
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
+    console.log('token', token , process.env.JWT_SECRET)
 
     return new Response(
       JSON.stringify({
