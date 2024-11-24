@@ -71,12 +71,24 @@ const AuthProvider = ({ children }) => {
     if (user) {
       // TODO: Save cart to the server when logged in
     } else {
-      setCart((prevCart) => [...prevCart, recipe]);
+        setCart((prevCart) => {
+            const updatedCart = [...prevCart, recipe];
+            localStorage.setItem("cart", JSON.stringify(updatedCart));
+            return updatedCart;
+          });
     }
   };
 
+  const removeFromCart = (recipeId) => {
+    setCart((prevCart) => {
+      const updatedCart = prevCart.filter((item) => item.id !== recipeId);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return updatedCart;
+    });
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, signUp, logout, cart, addToCart }}>
+    <AuthContext.Provider value={{ user, login, signUp, logout, cart, addToCart, removeFromCart }}>
       {children}
     </AuthContext.Provider>
   );

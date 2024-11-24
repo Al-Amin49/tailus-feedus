@@ -21,6 +21,7 @@ const SingleRecipe = ({ id, setIsOpen }) => {
         <Image src={data?.strMealThumb} width={500} height={500} alt="Image" />
       </div>
       <h2 className="text2xl font-semibold">{data?.strMeal}</h2>
+      <button className="w-full bg-yellow-300 px-4 py-3 rounded-md">Add to Cart</button>
     </div>
   );
 };
