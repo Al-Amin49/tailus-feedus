@@ -36,6 +36,7 @@ export async function POST(req) {
       email,
       phone,
       password: hashedPassword,
+      cart:[]
     });
 
     await newUser.save();
